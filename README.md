@@ -181,12 +181,61 @@ Sistema completo de gerenciamento de solicitações para clínicas YUNA.
 │   ├── service-worker.js  # Cache offline
 │   └── ...
 ├── vercel.json           # Configuração de deploy
+├── .env.example          # Template de variáveis de ambiente
+├── build-config.sh       # Script para gerar config do Firebase
+├── SECURITY.md           # Política de segurança
 └── README.md             # Este arquivo
 ```
 
 ## 🔧 Configuração Firebase
 
-Certifique-se de configurar as regras do Firebase para aceitar requisições do novo domínio Vercel.
+### 🔒 Configuração Segura (IMPORTANTE)
+
+Este projeto usa variáveis de ambiente para proteger suas credenciais Firebase. **NUNCA** faça commit de chaves de API no código.
+
+**Setup Local:**
+```bash
+# 1. Copie o arquivo de exemplo
+cp .env.example .env
+
+# 2. Preencha com suas credenciais do Firebase
+# Edite o arquivo .env com suas chaves reais
+
+# 3. Execute o script de build para gerar os arquivos de configuração
+./build-config.sh
+```
+
+**Setup para Deploy (Netlify/Vercel):**
+
+1. Vá para as configurações do seu projeto
+2. Adicione as variáveis de ambiente:
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+
+3. Configure o comando de build: `./build-config.sh`
+
+**⚠️ Segurança Adicional:**
+- Restrinja sua API key no [Google Cloud Console](https://console.developers.google.com/apis/credentials)
+- Configure regras de segurança no Firestore
+- Leia o arquivo [SECURITY.md](./SECURITY.md) para instruções completas
+
+### Firebase Security Rules
+
+Certifique-se de configurar as regras do Firebase para aceitar requisições do novo domínio e proteger seus dados.
+
+## 🔒 Segurança
+
+Para informações sobre segurança, incluindo:
+- Como configurar chaves de API corretamente
+- Como revogar chaves comprometidas
+- Melhores práticas de segurança
+- Resposta a incidentes
+
+Consulte nossa [Política de Segurança](./SECURITY.md).
 
 ## 📧 Suporte
 

@@ -86,17 +86,15 @@ async function initFirebaseApp() {
     
     try {
         if (!firebase.apps.length) {
-            const firebaseConfig = {
-                apiKey: "AIzaSyAogGkN5N24Puss4-kF9Z6npPYyEzVei3M",
-                authDomain: "studio-5526632052-23813.firebaseapp.com",
-                projectId: "studio-5526632052-23813",
-                storageBucket: "studio-5526632052-23813.firebasestorage.app",
-                messagingSenderId: "251931417472",
-                appId: "1:251931417472:web:4b955052a184d114f57f65"
-            };
+            // Use the configuration from firebase-config-secure.js loaded via script tag
+            if (typeof window.firebaseConfig === 'undefined') {
+                console.error('[ERRO] Configuração Firebase não encontrada');
+                alert('Erro: Configuração Firebase não carregada. Verifique firebase-config-secure.js');
+                return false;
+            }
             
-            console.log('[DEBUG] Inicializando Firebase com config:', firebaseConfig.projectId);
-            firebase.initializeApp(firebaseConfig);
+            console.log('[DEBUG] Inicializando Firebase com config:', window.firebaseConfig.projectId);
+            firebase.initializeApp(window.firebaseConfig);
             console.log('✅ Firebase inicializado com sucesso');
         }
         

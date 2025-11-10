@@ -1,29 +1,29 @@
-// Configuração Firebase para Produção
-// IMPORTANTE: Use variáveis de ambiente em produção!
+// Auto-generated Firebase configuration
+// DO NOT EDIT - Generated from environment variables during build
+// Run ./build-config.sh to regenerate this file
 
-// Configuração para desenvolvimento (mantenha as chaves atuais)
 const firebaseConfigDev = {
-  apiKey: "AIzaSyAogGkN5N24Puss4-kF9Z6npPYyEzVei3M",
-  authDomain: "studio-5526632052-23813.firebaseapp.com",
-  projectId: "studio-5526632052-23813",
-  storageBucket: "studio-5526632052-23813.firebasestorage.app",
-  messagingSenderId: "251931417472",
-  appId: "1:251931417472:web:4b955052a184d114f57f65"
+  apiKey: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  authDomain: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  projectId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  storageBucket: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  messagingSenderId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  appId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD"
 };
 
 // Configuração para produção (substitua pelos valores do seu projeto de produção)
 const firebaseConfigProd = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "your-production-api-key",
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "your-project.firebaseapp.com",
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "your-production-project",
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "your-project.firebasestorage.app",
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "your-sender-id",
-  appId: process.env.REACT_APP_FIREBASE_APP_ID || "your-app-id"
+  apiKey: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  authDomain: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  projectId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  storageBucket: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  messagingSenderId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+  appId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD"
 };
 
 // Detectar ambiente
-const isProduction = process.env.NODE_ENV === 'production' || 
-                    window.location.hostname !== 'localhost';
+const isProduction = window.location.hostname !== 'localhost' && 
+                    window.location.hostname !== '127.0.0.1';
 
 // Exportar configuração baseada no ambiente
 export const firebaseConfig = isProduction ? firebaseConfigProd : firebaseConfigDev;

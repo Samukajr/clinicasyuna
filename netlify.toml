@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = "echo 'Deploy YUNA Sistema Completo'"
+  command = "./build-config.sh"
 
 [build.environment]
   NODE_VERSION = "18"

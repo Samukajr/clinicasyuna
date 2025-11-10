@@ -1620,14 +1620,16 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
     <script>
-        // Configuração Firebase
+        // Configuração Firebase - Carregada de ambiente/build
+        // IMPORTANTE: Para desenvolvimento local, configure as variáveis em .env
+        // Para produção, configure no Netlify/Vercel Environment Variables
         const firebaseConfig = {
-            apiKey: "AIzaSyAogGkN5N24Puss4-kF9Z6npPYyEzVei3M",
-            authDomain: "studio-5526632052-23813.firebaseapp.com",
-            projectId: "studio-5526632052-23813",
-            storageBucket: "studio-5526632052-23813.firebasestorage.app",
-            messagingSenderId: "251931417472",
-            appId: "1:251931417472:web:4b955052a184d114f57f65"
+            apiKey: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+            authDomain: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+            projectId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+            storageBucket: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+            messagingSenderId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD",
+            appId: "PLACEHOLDER_WILL_BE_REPLACED_BY_BUILD"
         };
 
         firebase.initializeApp(firebaseConfig);
