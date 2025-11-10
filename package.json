@@ -8,7 +8,9 @@
     "build": "./build-config.sh",
     "start": "echo 'Deploy no Vercel - acesse: https://vercel.com'",
     "prebuild": "echo 'Verificando variáveis de ambiente...'",
-    "security-check": "detect-secrets scan --baseline .secrets.baseline || echo 'Instale detect-secrets: pip install detect-secrets'"
+    "security-check": "detect-secrets scan --baseline .secrets.baseline || echo 'Instale detect-secrets: pip install detect-secrets'",
+    "verify": "./verify-security.sh",
+    "test": "./verify-security.sh"
   },
   "keywords": ["healthcare", "pwa", "solicitacoes", "yuna", "progressive-web-app", "firebase"],
   "author": "Clínicas YUNA",
