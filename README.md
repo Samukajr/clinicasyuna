@@ -2,8 +2,15 @@
 
 [![Deploy](https://img.shields.io/badge/Deploy-Ready-success?logo=github)](https://github.com/Samukajr/clinicasyuna)
 [![PWA](https://img.shields.io/badge/PWA-Ready-purple?logo=pwa)](#)
+[![Security](https://img.shields.io/badge/Security-Enhanced-green?logo=shield)](./SECURITY.md)
 
 Sistema completo de gerenciamento de solicitações para clínicas YUNA com PWA otimizado.
+
+## 🚀 Quick Start
+
+**⚠️ IMPORTANTE**: Este projeto usa configuração segura com variáveis de ambiente. 
+
+📖 **[Leia o Guia de Deploy Completo](./DEPLOYMENT.md)** para instruções detalhadas de configuração.
 
 ## 🌐 **ACESSO ONLINE - DOMÍNIO PROFISSIONAL**
 
@@ -14,36 +21,38 @@ Sistema completo de gerenciamento de solicitações para clínicas YUNA com PWA 
 
 ## 🚀 **DEPLOY AUTOMÁTICO - SIGA ESTES PASSOS**
 
+⚠️ **ATENÇÃO**: Antes de fazer deploy, você precisa configurar as variáveis de ambiente do Firebase. 
+📖 Veja [DEPLOYMENT.md](./DEPLOYMENT.md) para instruções detalhadas.
+
 ### **✅ Opção 1: Netlify (RECOMENDADO)**
 
 1. **Acesse:** https://app.netlify.com
 2. **Faça login** com sua conta GitHub
 3. **Clique em "New site from Git"**
 4. **Escolha "GitHub"** e autorize a conexão
-5. **Selecione o repositório:** `yuna/yuna` (após transferir para organização)
+5. **Selecione o repositório:** `Samukajr/clinicasyuna`
 6. **Configure:**
-   - Build command: `echo "Static site"`
+   - Build command: `./build-config.sh`
    - Publish directory: `.` (ponto)
    - Branch: `main`
+   - **IMPORTANTE**: Adicione as variáveis de ambiente (veja [DEPLOYMENT.md](./DEPLOYMENT.md))
 7. **Clique em "Deploy site"**
 
 ### **🔄 Opção 2: Vercel (ALTERNATIVO)**
 
 1. **Acesse:** https://vercel.com/new
 2. **Conecte** com GitHub
-3. **Selecione:** `yuna/yuna` (após transferir para organização)
+3. **Selecione:** `Samukajr/clinicasyuna`
 4. **Configure:**
    - Framework Preset: `Other`
-   - Build Command: Deixe vazio
+   - Build Command: `./build-config.sh`
    - Output Directory: `.`
+   - **IMPORTANTE**: Adicione as variáveis de ambiente (veja [DEPLOYMENT.md](./DEPLOYMENT.md))
 5. **Deploy**
 
 ### **📚 Opção 3: GitHub Pages**
 
-1. **No GitHub,** vá para: github.com/yuna/yuna (após transferir)
-2. **Pages** → Source: Deploy from branch
-3. **Branch:** main, folder: / (root)
-4. **Save**
+Veja [DEPLOYMENT.md](./DEPLOYMENT.md) para instruções de deploy com GitHub Actions.
 
 ## 📱 **Estrutura do Sistema**
 
@@ -181,12 +190,61 @@ Sistema completo de gerenciamento de solicitações para clínicas YUNA.
 │   ├── service-worker.js  # Cache offline
 │   └── ...
 ├── vercel.json           # Configuração de deploy
+├── .env.example          # Template de variáveis de ambiente
+├── build-config.sh       # Script para gerar config do Firebase
+├── SECURITY.md           # Política de segurança
 └── README.md             # Este arquivo
 ```
 
 ## 🔧 Configuração Firebase
 
-Certifique-se de configurar as regras do Firebase para aceitar requisições do novo domínio Vercel.
+### 🔒 Configuração Segura (IMPORTANTE)
+
+Este projeto usa variáveis de ambiente para proteger suas credenciais Firebase. **NUNCA** faça commit de chaves de API no código.
+
+**Setup Local:**
+```bash
+# 1. Copie o arquivo de exemplo
+cp .env.example .env
+
+# 2. Preencha com suas credenciais do Firebase
+# Edite o arquivo .env com suas chaves reais
+
+# 3. Execute o script de build para gerar os arquivos de configuração
+./build-config.sh
+```
+
+**Setup para Deploy (Netlify/Vercel):**
+
+1. Vá para as configurações do seu projeto
+2. Adicione as variáveis de ambiente:
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+
+3. Configure o comando de build: `./build-config.sh`
+
+**⚠️ Segurança Adicional:**
+- Restrinja sua API key no [Google Cloud Console](https://console.developers.google.com/apis/credentials)
+- Configure regras de segurança no Firestore
+- Leia o arquivo [SECURITY.md](./SECURITY.md) para instruções completas
+
+### Firebase Security Rules
+
+Certifique-se de configurar as regras do Firebase para aceitar requisições do novo domínio e proteger seus dados.
+
+## 🔒 Segurança
+
+Para informações sobre segurança, incluindo:
+- Como configurar chaves de API corretamente
+- Como revogar chaves comprometidas
+- Melhores práticas de segurança
+- Resposta a incidentes
+
+Consulte nossa [Política de Segurança](./SECURITY.md).
 
 ## 📧 Suporte
 
